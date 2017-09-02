@@ -14,7 +14,7 @@ app.get('/article-one', function (req, res) {
 });
 
 app.get('/article-two', function (req, res) {
-  res.send('This is article twp ready to serve');
+  res.send('This is article two ready to serve');
 });
 
 app.get('/article-three', function (req, res) {
