@@ -6,7 +6,14 @@ element.innerHTML= "New Code";
 //Move the image
 
 var moveImg= document.getElementById('image');
+var marginLeft = 0;
+
+function moveRight()
+{
+    marginLeft=marginLeft=10;
+    moveImg.style=marginLeft=marginLeft='px';
+}
 moveImg.onclick= function()
 {
-    moveImg.style.marginLeft= '100px';
+    var interval= setInterval(moveRight,100);
 };
