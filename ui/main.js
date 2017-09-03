@@ -10,8 +10,8 @@ var marginLeft = 0;
 
 function moveRight()
 {
-    marginLeft=marginLeft=10;
-    moveImg.style.marginLeft=marginLeft='px';
+    marginLeft=marginLeft+10;
+    moveImg.style.marginLeft=marginLeft+'px';
 }
 moveImg.onclick= function()
 {
