@@ -34,7 +34,7 @@ var htmlTemplate = `
 
 <head>
     <title>
-        $(title)
+        ${title}
     </title>
     <meta name="viewport" content="width=device=width , initial-scale=1">
    <link href="/ui/style.css" rel="stylesheet" />
@@ -46,10 +46,10 @@ var htmlTemplate = `
             <a href="/">Home</a>
         </div>
         <h3>
-            $(heding)
+            ${heding}
         </h3>
         <div>
-        $(content)
+        ${content}
         </div>
     </div>    
     </body>
