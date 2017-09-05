@@ -9,7 +9,7 @@ button.onclick=function() {
     //Capture the request and store it varaiable
     
     request.onreadystatechange= function() {
-        if(requestState===XMLHttpRequest.DONE) {
+        if(request.readyState===XMLHttpRequest.DONE) {
             //Take some action
             
             if(request.status===200) {
