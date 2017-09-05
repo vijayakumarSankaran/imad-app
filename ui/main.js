@@ -25,3 +25,21 @@ button.onclick=function() {
     request.open('GET','http://vijayakumarsm3.imad.hasura-app.io/counter',true);
     request.send(null);
 };
+
+//Submit names
+var nameInput=document.getElementById('id');
+var name=nameInput.value;
+var submit=document.getElementById('submit_btn');
+submit.onclick= function() {
+    //Make a request to the server and send the name
+    
+    //Capture the list of names and render it as a list
+    var names= ['name1','name2','name3','name4','name5'];
+    var list='';
+    for(var i=0;i<names.length;i++) 
+    {
+           list== '<li>' + names[i] + '</li>';
+    }
+    var ul = document.getElementById('namelist');
+    ul.innerHTML= list;
+};
