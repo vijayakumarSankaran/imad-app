@@ -1,15 +1,27 @@
 //Counter code
 
 var button=document.getElementById('counter');
-var counter= 0;
 button.onclick=function() {
-    //Make a request to the counter endpoint
+    //Create the request object
+    
+    var request= new XMLHttpRequest();
     
     //Capture the request and store it varaiable
     
-    //Render the variable in the correct span
+    request.onreadystatechange= function() {
+        if(requestState===XMLHttpRequest.DONE) {
+            //Take some action
+            
+            if(request.status===200) {
+                var counter= request.responseText;
+                var span= document.getElementById('count');
+                span.innerHTML=counter.toString();
+            }
+        }
+        //Not Done yet
+    };
     
-    counter= counter+1;
-    var span= document.getElementById('count');
-    span.innerHTML=counter.toString();
+    // Make the request
+    request.open('GET','http://vijayakumarsm3.imad.hasura-app.io/counter',true);
+    request.send(null);
 };
