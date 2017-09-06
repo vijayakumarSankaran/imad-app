@@ -34,6 +34,7 @@ var submit=document.getElementById('submit_btn');
 submit.onclick= function() {
     //Make a request to the server and send the name
     
+    var request= new XMLHttpRequest();
     //Capture the list of names and render it as a list
     var names= request.responseText;
     names= JSON.parse(names);//convert STRING to oBJECT array(Reverse of JSoN)
