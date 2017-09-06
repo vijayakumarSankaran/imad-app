@@ -22,9 +22,8 @@ button.onclick=function() {
     };
     
     // Make the request
-    var nameInput=document.getElementById('name');
-    var name=nameInput.value;
-    request.open('GET','http://vijayakumarsm3.imad.hasura-app.io/submit-name=' + name ,true);
+
+    request.open('GET','http://vijayakumarsm3.imad.hasura-app.io/counter' + name ,true);
     request.send(null);
 };
 
@@ -32,19 +31,38 @@ button.onclick=function() {
 
 var submit=document.getElementById('submit_btn');
 submit.onclick= function() {
-    //Make a request to the server and send the name
+    //Create the request object
     
     var request= new XMLHttpRequest();
-    //Capture the list of names and render it as a list
-    var names= request.responseText;
-    ////convert STRING to oBJECT array(Reverse of JSoN)
-    names= JSON.parse(names);
-    var list='';
-    for(var i=0;i<names.length;i++) 
-    {
-           list+= '<li>' + names[i] + '</li>';
+    
+    //Capture the request and store it varaiable
+    
+    request.onreadystatechange= function() {
+        if(request.readyState===XMLHttpRequest.DONE) {
+            //Take some action
+            
+            if(request.status===200) {
+                //capture list of names and render it in list
+                var name= request.responseText;
+                //convert STRING to oBJECT array(Reverse of JSoN)
+                names= JSON.parse(names);
+                var list='';
+                 for(var i=0;i<names.length;i++) 
+                     {
+                       list+= '<li>' + names[i] + '</li>';
+                     }
+                     var ul = document.getElementById('namelist');
+                     ul.innerHTML= list;
+            }
+            
+        }
+        
     }
-   
-    var ul = document.getElementById('namelist');
-    ul.innerHTML= list;
+    
+   // Make the request
+    var nameInput=document.getElementById('name');
+    var name=nameInput.value;
+    request.open('GET','http://vijayakumarsm3.imad.hasura-app.io/submit-name=' + name ,true);
+    request.send(null);
+    
 };
