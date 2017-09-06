@@ -22,7 +22,7 @@ button.onclick=function() {
     };
     
     // Make the request
-    request.open('GET','http://vijayakumarsm3.imad.hasura-app.io/counter',true);
+    request.open('GET','http://vijayakumarsm3.imad.hasura-app.io/submit-name=' + name ,true);
     request.send(null);
 };
 
@@ -34,7 +34,8 @@ submit.onclick= function() {
     //Make a request to the server and send the name
     
     //Capture the list of names and render it as a list
-    var names= ['name1','name2','name3','name4','name5'];
+    var names= request.responseText;
+    names= JSON.parse(names);//convert STRING to oBJECT array(Reverse of JSoN)
     var list='';
     for(var i=0;i<names.length;i++) 
     {
