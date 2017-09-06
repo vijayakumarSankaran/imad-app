@@ -22,6 +22,8 @@ button.onclick=function() {
     };
     
     // Make the request
+    var nameInput=document.getElementById('name');
+    var name=nameInput.value;
     request.open('GET','http://vijayakumarsm3.imad.hasura-app.io/submit-name=' + name ,true);
     request.send(null);
 };
@@ -40,8 +42,7 @@ submit.onclick= function() {
     {
            list+= '<li>' + names[i] + '</li>';
     }
-    var nameInput=document.getElementById('name');
-    var name=nameInput.value;
+   
     var ul = document.getElementById('namelist');
     ul.innerHTML= list;
 };
