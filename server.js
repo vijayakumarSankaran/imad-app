@@ -3,7 +3,14 @@ var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
 
-user: vijayakumarsm3
+var config= {
+   user: 'vijayakumarsm3',
+database: 'db-vijayakumarsm3-80114',
+host: 'db.imad.hasura-app.io',
+port: '5432',
+password: process.env.DB_PASSWORD 
+};
+
 
 var app = express();
 app.use(morgan('combined'));
@@ -84,6 +91,20 @@ return htmlTemplate;
 }
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
+
+var Pool= new Pool(config);
+app.get('/test-db', function(req, res) {
+    //Make a Select function
+    // return a response with the results
+    Pool.query('Select * from student', function(err, result) {
+        if(err) {
+            res.status(500).send(err.toString());
+        }
+        else {
+            res.send(JSON.stringify(result));
+        }
+    });
 });
 
 var counter= 0;
