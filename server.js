@@ -94,7 +94,7 @@ app.get('/', function (req, res) {
 });
 
 var Pool= new Pool(config);
-app.get('/test-db', function(req, res) {
+app.get('/student-db', function(req, res) {
     //Make a Select function
     // return a response with the results
     Pool.query('Select * from student', function(err, result) {
