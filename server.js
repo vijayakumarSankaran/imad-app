@@ -94,19 +94,15 @@ app.get('/', function (req, res) {
 });
 
 var Pool= new Pool(config);
-app.get('/student-db', function(req, res) {
-    //Make a Select function
-    // return a response with the results
-    Pool.query('Select * from student', function(err, result) {
-        if(err) {
-            res.status(500).send(err.toString());
-        }
-        else {
-            res.send(JSON.stringify(result.rows));
-        }
-    });
+app.get('/test-db',function(req,res){
+  pool.query("SELECT * FROM test",function(err,result){
+      if(err){
+          res.status(500).send(err.toString());
+      }else{
+          res.send(JSON.stringify(result));
+      }
+  }); 
 });
-
 var counter= 0;
 app.get('/counter', function (req, res) {
     counter= counter+1;
